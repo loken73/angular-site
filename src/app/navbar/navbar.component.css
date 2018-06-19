@@ -1,0 +1,38 @@
+.navbar {
+    color: gold;
+    background-color: #006400;
+    margin-bottom: 20px;
+}
+
+.navbar-default {
+    padding: 20px 10px 0;
+}
+
+.navbar-brand { 
+    padding: 0;
+}
+
+.navbar-brand:hover {
+    color: gold;
+}
+
+.navbar ul a,
+.navbar-brand {
+    text-decoration: none;
+    color: gold;  
+    font-size: 16px;
+}
+
+.navbar a:hover,
+.navbar ul a:hover {
+    text-decoration: underline;
+}
+
+.dropdown.open {
+    background-color: #006400;
+}
+
+.dropdown-menu {
+    background-color: #006400;
+    padding: 5px 0;
+}
