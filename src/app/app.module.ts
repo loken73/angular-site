@@ -1,11 +1,19 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { AppointmentComponent } from './appointment/appointment.component';
 import { AccountComponent } from './account/account.component';
+import { HomeComponent } from './home/home.component';
+
+const AppRoutes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'appointment', component: CalendarComponent },
+  { path: 'account', component: AccountComponent }
+];
 
 @NgModule({
   declarations: [
@@ -13,10 +21,12 @@ import { AccountComponent } from './account/account.component';
     NavbarComponent,
     CalendarComponent,
     AppointmentComponent,
-    AccountComponent
+    AccountComponent,
+    HomeComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(AppRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
