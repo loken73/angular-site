@@ -1,3 +1,24 @@
-<p>
-  appointment works!
-</p>
+<div *ngIf='date' (click)="clicked($event)" id="modal-background">
+  <div id="modal">
+    <div id="title">Set Appointment</div>
+    <div class="modal-body">
+      <div class="date">Date: {{ date }}</div>
+      <div class="appointment-times">
+        <label for="times">Time:</label>
+        <select id="times">
+          <option></option>
+          <option>8:00AM</option>
+          <option>9:00AM</option>
+          <option>10:00AM</option>
+        </select>
+      </div>
+      <div>
+        <label for="comments">Comments:</label>
+        <textarea name="comments" id="comments" cols="" rows="10"></textarea>
+      </div>
+      <div class="submit-wrapper">
+        <input type="submit" id="submit" (click)="clicked($event)">
+      </div>
+    </div>
+  </div>
+</div>

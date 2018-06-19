@@ -1,3 +1,25 @@
-<p>
-  calendar works!
-</p>
+<div>
+  <app-appoinment [date]='dateChosen' (dateNone)='dateNowNone($event)'></app-appoinment>
+</div>
+<div class="container">
+  <div id="calendar-header">
+    <span *ngIf='displayPreviousChevron()' (click)='previousMonth()'><i class="fa fa-chevron-left" aria-hidden="true"></i></span>
+    {{calendarHeader}}
+    <span (click)='nextMonth()'><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
+  </div>
+  <div id="calendar">
+    <div class="day-of-week">Sunday</div>
+    <div class="day-of-week">Monday</div>
+    <div class="day-of-week">Tuesday</div>
+    <div class="day-of-week">Wednesday</div>
+    <div class="day-of-week">Thursday</div>
+    <div class="day-of-week">Friday</div>
+    <div class="day-of-week">Saturday</div>
+    <div class="day" 
+         *ngFor='let day of sqInCalendar2; let i = index' 
+         [class.inactive]='!day.date'
+         (click)='datePicked(day.date)'>
+          <div>{{day.dateNumber}}</div>
+    </div>
+  </div>
+</div>
