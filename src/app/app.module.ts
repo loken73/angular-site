@@ -10,6 +10,7 @@ import { AppointmentComponent } from './appointment/appointment.component';
 import { AccountComponent } from './account/account.component';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
+import { ServicesComponent } from './services/services.component';
 
 const AppRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -25,7 +26,8 @@ const AppRoutes: Routes = [
     AppointmentComponent,
     AccountComponent,
     HomeComponent,
-    FooterComponent
+    FooterComponent,
+    ServicesComponent
   ],
   imports: [
     BrowserModule,
