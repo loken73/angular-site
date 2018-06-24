@@ -1,7 +1,9 @@
 .img-background {
     height: 65vh;
     margin-top: -20px;
-    background-color: rgba(0,0,0, 0.7);
+    background: no-repeat center linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../../assets/taxes.jpg');
+    background-size: cover;
+    text-align: center;
 }
 
 .client-reason {
@@ -25,4 +27,22 @@
 #call-to-action {
     text-align: center;
     display: inline-block;
+    color: gold;
+    font-size: 18px;
+    margin-top: 20vh;
+}
+
+#action-text {
+    margin-bottom: 8px;
+}
+
+#button-wrapper button {
+    padding: 8px 25px;
+    background-color: transparent;
+    color: gold;
+    border: solid 1px gold;
+}
+
+#button-wrapper button:hover {
+    background-color: #006400;
 }

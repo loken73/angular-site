@@ -1,0 +1,23 @@
+footer {
+    background-color: #004000;
+    color: gold;
+    padding: 35px 0;
+}
+
+footer i {
+    font-size: 32px;
+    color: gold;
+}
+
+footer i:hover {
+    color: white;
+}
+
+.footer-title {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+#social-links {
+    margin-top: 30px;
+}
