@@ -4,6 +4,7 @@
 
 .navbar-default {
     padding: 20px 10px 0;
+    background: linear-gradient(#dfdfdf, #f8f8f8);
 }
 
 .navbar-brand { 
