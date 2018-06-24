@@ -11,11 +11,13 @@ import { AccountComponent } from './account/account.component';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { ServicesComponent } from './services/services.component';
+import { LoginRegComponent } from './login-reg/login-reg.component';
 
 const AppRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'appointment', component: CalendarComponent },
-  { path: 'account', component: AccountComponent }
+  { path: 'account', component: AccountComponent },
+  { path: 'services', component: ServicesComponent }
 ];
 
 @NgModule({
@@ -27,7 +29,8 @@ const AppRoutes: Routes = [
     AccountComponent,
     HomeComponent,
     FooterComponent,
-    ServicesComponent
+    ServicesComponent,
+    LoginRegComponent
   ],
   imports: [
     BrowserModule,

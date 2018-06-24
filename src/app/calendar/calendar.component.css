@@ -11,6 +11,11 @@
     height: 140px;
 }
 
+.day:hover {
+    cursor: pointer;
+    background-color: #bbb;
+}
+
 .inactive {
     background-color: #bbb;
     opacity: 0.5;
