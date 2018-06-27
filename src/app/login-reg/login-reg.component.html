@@ -1,8 +1,150 @@
-<div>
-  <div class="col-md-6">
-    <h3>Register</h3>
+<div id="register-login" class="container">
+  <div class="register-form col-md-6" *ngIf='!login'>
+    <form [formGroup]="registerForm">
+      <h3>Register</h3>
+      <div class="form-group">
+        <label for="firstname">First Name</label>
+        <input type="text" 
+               class="form-control" 
+               id="firstname" 
+               placeholder="First Name" 
+               formControlName="firstName">
+        <div *ngIf="registerForm.controls['firstName'].invalid 
+             && (registerForm.controls['firstName'].dirty 
+                || registerForm.controls['firstName'].touched)"
+             class="alert alert-danger">
+
+          <div *ngIf="registerForm.controls['firstName'].errors.required">
+            First name is required.
+          </div>
+          <div *ngIf="registerForm.controls['firstName'].errors.minlength">
+            First name must be at least 3 characters in length.
+          </div>
+          <div *ngIf="registerForm.controls['firstName'].errors.maxlength">
+            First name cannot exceed 40 characters.
+          </div>
+
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="lastname">Last Name</label>
+        <input type="text" 
+               class="form-control" 
+               id="lastname" 
+               placeholder="Last Name" 
+               formControlName="lastName">
+        <div *ngIf="registerForm.controls['lastName'].invalid 
+             && (registerForm.controls['lastName'].dirty || registerForm.controls['lastName'].touched)"
+             class="alert alert-danger">
+
+          <div *ngIf="registerForm.controls['lastName'].errors.required">
+            Last name is required.
+          </div>
+          <div *ngIf="registerForm.controls['lastName'].errors.minlength">
+            Last name must be at least 3 characters in length.
+          </div>
+          <div *ngIf="registerForm.controls['lastName'].errors.maxlength">
+            Last name cannot exceed 40 characters.
+          </div>
+
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="emailAddress">Email Address</label>
+        <input type="email" 
+               class="form-control" 
+               id="emailAddress" 
+               placeholder="Email Address" 
+               formControlName="email">
+        <div *ngIf="registerForm.controls['email'].invalid 
+              && (registerForm.controls['email'].dirty || registerForm.controls['email'].touched)"
+              class="alert alert-danger">
+
+          <div *ngIf="registerForm.controls['email'].errors.required">
+            Email is required.
+          </div>
+          <div *ngIf="registerForm.controls['email'].errors.email">
+            A valid email address must be entered.
+          </div>
+
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" 
+               class="form-control" 
+               id="password" 
+               placeholder="Password" 
+               formControlName="password">
+          <div *ngIf="registerForm.controls['password'].invalid 
+               && (registerForm.controls['password'].dirty || registerForm.controls['password'].touched)"
+               class="alert alert-danger">
+  
+            <div *ngIf="registerForm.controls['password'].errors.required">
+              Password is required.
+            </div>
+            <div *ngIf="registerForm.controls['password'].errors.minlength">
+              Your password must be minimum 7 characters.
+            </div>
+            <div *ngIf="registerForm.controls['password'].errors.pattern">
+              Your password must contain at least all of the following: one capital letter, one lower case letter, and number.
+            </div>
+  
+          </div>
+      </div>
+      <button [class.disabled]="registerForm.invalid" type="submit" class="btn btn-default">Submit</button>
+    </form>
+    <div>If you have already registered, please <a (click)='loginAppears()'>log in</a>.</div>
   </div>
-  <div class="col-md-6">
-    <h3>Log In</h3>
+  <div class="col-md-6 login-form" *ngIf='login'>
+    <form [formGroup]="loginForm">
+      <h3>Log In</h3>
+      <div class="form-group">
+        <label for="emailAddressLogin">Email address</label>
+        <input type="email" 
+               class="form-control" 
+               id="emailAddressLogin" 
+               placeholder="Email"
+               formControlName="email">
+          <div *ngIf="loginForm.controls['email'].invalid 
+            && (loginForm.controls['email'].dirty || loginForm.controls['email'].touched)"
+            class="alert alert-danger">
+ 
+           <div *ngIf="loginForm.controls['email'].errors.required">
+             Email is required.
+           </div>
+           <div *ngIf="loginForm.controls['email'].errors.email">
+             A valid email address must be entered.
+           </div>
+ 
+         </div>
+      </div>
+      <div class="form-group">
+        <label for="passwordLogin">Password</label>
+        <input type="password" 
+               class="form-control" 
+               id="passwordLogin" 
+               placeholder="Password"
+               formControlName="password">
+          <div *ngIf="loginForm.controls['password'].invalid 
+            && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)"
+            class="alert alert-danger">
+  
+            <div *ngIf="loginForm.controls['password'].errors.required">
+              Password is required.
+            </div>
+            <div *ngIf="loginForm.controls['password'].errors.minlength">
+              Your password must be minimum 7 characters.
+            </div>
+            <div *ngIf="loginForm.controls['password'].errors.pattern">
+              Your password must contain at least all of the following: one capital letter, one lower case letter, and number.
+            </div>
+  
+          </div>
+      </div>
+      <button [class.disabled]="loginForm.invalid" type="submit" class="btn btn-default">Submit</button>
+    </form>
+    <div>If you have not already registered, please <a (click)='loginAppears()'>register</a>.</div>
   </div>
 </div>

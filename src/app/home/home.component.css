@@ -1,7 +1,7 @@
 .img-background {
     height: 65vh;
     margin-top: -20px;
-    background: no-repeat center linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../../assets/taxes.jpg');
+    background: no-repeat center linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('../../assets/taxes.jpg');
     background-size: cover;
     text-align: center;
 }

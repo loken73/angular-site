@@ -1,0 +1,24 @@
+#register-login {
+    padding: 6vh 0 12vh 0;
+}
+
+h3 {
+    margin-bottom: 20px;
+}
+
+a:hover {
+    cursor: pointer;
+}
+
+button {
+    margin-bottom: 20px;
+}
+
+.login-form {
+    padding-bottom: 20vh;
+}
+
+.alert {
+    padding: 8px;
+    margin-top: 5px;
+}

@@ -48,7 +48,7 @@ export class CalendarComponent implements OnInit {
         return {
           dayNumber: sq,
           date: moment(dateOfFirst).add(sq - firstday, 'day'),
-          dateNumber: sq - firstday + 1
+          dateNumber: sq - firstday + 1,
         };
       } else {
         return {
