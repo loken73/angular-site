@@ -1,6 +1,6 @@
 <div id="register-login" class="container">
   <div class="register-form col-md-6" *ngIf='!login'>
-    <form [formGroup]="registerForm">
+    <form [formGroup]="registerForm" (ngSubmit)='onRegisterSubmit()'>
       <h3>Register</h3>
       <div class="form-group">
         <label for="firstname">First Name</label>

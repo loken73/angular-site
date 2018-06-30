@@ -12,6 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { ServicesComponent } from './services/services.component';
 import { LoginRegComponent } from './login-reg/login-reg.component';
+import { UserService } from './shared/user.service';
 
 const AppRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -39,7 +40,7 @@ const AppRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
