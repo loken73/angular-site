@@ -19,11 +19,12 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a [routerLink]="['']">Home <!--<span class="sr-only">(current)</span>--></a></li>
         <li><a [routerLink]="['/services']">Services</a></li>
-        <li><a [routerLink]="['/appointment']">Appointment</a></li>
+        <li *ngIf='findToken()'><a [routerLink]="['/appointment']">Appointment</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a [routerLink]="['login-register']">Register/Login</a></li>
+            <li *ngIf='!findToken()'><a [routerLink]="['login-register']">Register/Login</a></li>
+            <li *ngIf='findToken()' (click)=LogOut()><a>Logout</a></li>
           </ul>
         </li>
       </ul>

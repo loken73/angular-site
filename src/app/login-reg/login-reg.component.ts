@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { User } from '../shared/user.model';
 import { UserService } from '../shared/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-reg',
@@ -15,7 +16,7 @@ export class LoginRegComponent {
   loginForm: FormGroup;
   user: User;
 
-  constructor(private fb: FormBuilder, private userService: UserService) {
+  constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {
     this.CreateRegisterForm();
 
     this.CreateLoginForm();
@@ -39,19 +40,26 @@ export class LoginRegComponent {
     });
   }
 
-  BindLoginUserModel() {
-    this.loginForm.setValue({
-
-    });
-  }
-
   loginAppears() {
     this.login = !this.login;
   }
 
   onRegisterSubmit() {
-    const regValues = this.registerForm.value;
-
+    const regValues: User = this.registerForm.value;
+    this.userService.registerUser(regValues);
     console.log(regValues);
+    this.router.navigate(['']);
+  }
+
+  onLoginSubmit() {
+    const email = this.loginForm.value.email;
+    const password = this.loginForm.value.password;
+    this.userService.loginUser(email, password)
+      .subscribe((res: any) => {
+        localStorage.setItem('User_Token', res.access_token);
+        console.log(localStorage.getItem('User_Token'));
+        console.log(res);
+      });
+    this.router.navigate(['']);
   }
 }

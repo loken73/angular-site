@@ -1,15 +1,14 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Response } from '@angular/http';
 import { Observable } from 'rxjs';
-import 'rxjs/add/operator/map';
 import { User } from './user.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  readonly rootUrl = 'http://localhost:61165';
+  readonly rootUrl = 'http://localhost:61165/';
   constructor(private http: HttpClient) { }
 
     registerUser(user: User) {
@@ -19,6 +18,17 @@ export class UserService {
         email: user.email,
         password: user.password
       };
-      return this.http.post(this.rootUrl + 'api/Account/Register', body);
+      return this.http.post(this.rootUrl + 'api/Account/Register', body)
+        .subscribe(res => { console.log(res); });
+    }
+
+    loginUser(userName: string, password: string) {
+      const urlEncode = 'username=' + userName + '&password=' + password + '&grant_type=password';
+      const reqHeader = new HttpHeaders({'Content-Type' : 'x-www-urlencoded'});
+      return this.http.post(this.rootUrl + 'Token', urlEncode, {headers : reqHeader});
+    }
+
+    loggedIn() {
+      return !!localStorage.getItem('User_Token');
     }
 }

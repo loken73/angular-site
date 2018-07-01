@@ -1,3 +1,4 @@
+import { AppointmentAuthGuard } from './shared/appointment-auth.guard';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -13,10 +14,11 @@ import { FooterComponent } from './footer/footer.component';
 import { ServicesComponent } from './services/services.component';
 import { LoginRegComponent } from './login-reg/login-reg.component';
 import { UserService } from './shared/user.service';
+import { HttpClientModule } from '@angular/common/http';
 
 const AppRoutes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'appointment', component: CalendarComponent },
+  { path: 'appointment', component: CalendarComponent, canActivate: [AppointmentAuthGuard]},
   { path: 'account', component: AccountComponent },
   { path: 'services', component: ServicesComponent },
   { path: 'login-register', component: LoginRegComponent}
@@ -38,9 +40,10 @@ const AppRoutes: Routes = [
     BrowserModule,
     RouterModule.forRoot(AppRoutes),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [UserService],
+  providers: [ UserService, AppointmentAuthGuard ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
