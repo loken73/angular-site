@@ -10,15 +10,15 @@ export class CalendarComponent implements OnInit {
 
   constructor() { }
 
-  public dateNow = moment();
-  public currentMonth = this.dateNow.month();
-  public daysInMonth = this.dateNow.daysInMonth();
-  public startOfMonthDate = this.dateNow.startOf('M');
-  public startOfMonthWeekday = this.startOfMonthDate.day();
-  public calendarHeader = moment.months(this.dateNow.month()) + ' ' + this.dateNow.year();
-  public sqInCalendar = [];
-  public sqInCalendar2: any;
-  public dateChosen: string;
+  dateNow = moment();
+  currentMonth = this.dateNow.month();
+  daysInMonth = this.dateNow.daysInMonth();
+  startOfMonthDate = this.dateNow.startOf('M');
+  startOfMonthWeekday = this.startOfMonthDate.day();
+  calendarHeader = moment.months(this.dateNow.month()) + ' ' + this.dateNow.year();
+  sqInCalendar = [];
+  sqInCalendar2: any;
+  dateChosen: string;
 
   ngOnInit() {
     const chartLength = this.sqInArray(this.currentMonth, this.startOfMonthWeekday, this.daysInMonth);
