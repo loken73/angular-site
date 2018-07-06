@@ -1,3 +1,4 @@
+import { AppointmentService } from './../shared/appointment.service';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
@@ -9,16 +10,21 @@ export class AppointmentComponent implements OnInit {
 
   @Input() public date: string;
   @Output() dateNone = new EventEmitter();
+  apptTimes = [];
 
-  constructor() { }
+  constructor(private apptService: AppointmentService) { }
 
   ngOnInit() {
   }
 
   clicked(ev) {
+    if (ev.target.id === 'submit') {
+      this.date;
+    }
     if (ev.target.id === 'modal-background' || ev.target.id === 'submit') {
       this.date = '';
       this.dateNone.emit(this.date);
     }
   }
+
 }
