@@ -25,7 +25,7 @@ export class UserService {
     loginUser(userName: string, password: string) {
       const urlEncode = 'username=' + userName + '&password=' + password + '&grant_type=password';
       const reqHeader = new HttpHeaders({'Content-Type' : 'x-www-urlencoded'});
-      return this.http.post(this.rootUrl + 'Token', urlEncode, {headers : reqHeader});
+      return this.http.post(this.rootUrl + 'Token', urlEncode, { headers : reqHeader });
     }
 
     loggedIn() {

@@ -53,6 +53,10 @@
     font-family: arial;
 } 
 
+#times {
+    margin-left: 5px;
+}
+
 #modal textarea {
     width: 100%;
     resize: vertical;

@@ -1,5 +1,6 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { AppointmentService } from '../shared/appointment.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,10 +10,13 @@ import { Component, OnInit } from '@angular/core';
 export class NavbarComponent implements OnInit {
 
   tokenExists: boolean;
-  constructor(private router: Router) { }
+  constructor(private router: Router, private apptService: AppointmentService) { }
 
   ngOnInit() {
     this.findToken();
+
+    this.apptService.getAppts().subscribe(res => console.log(res));
+    this.apptService.getAllAppts().subscribe(res => console.log(res));
   }
 
   findToken() {
