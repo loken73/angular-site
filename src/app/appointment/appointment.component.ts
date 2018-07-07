@@ -24,13 +24,9 @@ export class AppointmentComponent implements OnInit {
                           '4:00 PM',
                           '5:00 PM'
                         ];
+  appt: Appointment;
 
   constructor(private fb: FormBuilder, private apptService: AppointmentService) { }
-
-  /*appt: Appointment = {
-    Date = this.date,
-    Time = appt
-  };*/
 
   appointmentForm: FormGroup;
 
@@ -46,9 +42,9 @@ export class AppointmentComponent implements OnInit {
   }
 
   clicked(ev) {
-    /*if (ev.target.id === 'submit') {
-      this.apptService.makeAppt(this.appointment).subscribe(res => { console.log(res); });
-    }*/
+    if (ev.target.id === 'submit') {
+      this.submitAppointment();
+    }
     if (ev.target.id === 'modal-background' || ev.target.id === 'submit') {
       this.date = '';
       this.dateNone.emit(this.date);
@@ -56,7 +52,13 @@ export class AppointmentComponent implements OnInit {
   }
 
   submitAppointment() {
-    
+      const submitAppt: Appointment = {
+        ApptDate: this.date,
+        Time: this.appointmentForm.get('time').value,
+        Notes: this.appointmentForm.get('notes').value
+      };
+
+      return this.apptService.makeAppt(submitAppt).subscribe(res => { console.log(res); });
   }
 
 }
