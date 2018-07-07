@@ -1,7 +1,7 @@
 import { AppointmentService } from './../shared/appointment.service';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Appointment } from '../shared/appointment.model';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-appointment',
@@ -32,9 +32,17 @@ export class AppointmentComponent implements OnInit {
     Time = appt
   };*/
 
-
+  appointmentForm: FormGroup;
 
   ngOnInit() {
+    this.createAppointmentForm();
+  }
+
+  createAppointmentForm() {
+    this.appointmentForm = this.fb.group({
+      'time': [null, Validators.required],
+      'notes': [null, Validators.required]
+    });
   }
 
   clicked(ev) {
