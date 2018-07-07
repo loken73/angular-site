@@ -1,5 +1,5 @@
 export class Appointment {
-    Date: string;
+    ApptDate: string;
     Time: string;
     Notes: string;
 }

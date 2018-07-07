@@ -13,7 +13,7 @@ export class AppointmentService {
 
   makeAppt(appt: Appointment) {
     const body: Appointment = {
-      Date: appt.Date,
+      ApptDate: appt.ApptDate,
       Time: appt.Time,
       Notes: appt.Notes
     };

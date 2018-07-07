@@ -55,4 +55,8 @@ export class AppointmentComponent implements OnInit {
     }
   }
 
+  submitAppointment() {
+    
+  }
+
 }

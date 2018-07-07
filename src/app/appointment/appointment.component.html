@@ -2,18 +2,23 @@
   <div id="modal">
     <div id="title">Set Appointment</div>
     <div class="modal-body">
-      <form>
+      <form [formGroup]='appointmentForm' (ngSubmit)='submitAppointment()'>
         <div class="date">Date: {{ date }}</div>
         <div class="appointment-times">
           <label for="times">Time: </label>
-          <select id="times">
+          <select id="times" formControlName="time">
             <option></option>
             <option *ngFor='let appt of apptTimes'>{{ appt }}</option>
           </select>
         </div>
         <div>
           <label for="comments">Comments:</label>
-          <textarea name="comments" id="comments" cols="" rows="10"></textarea>
+          <textarea name="comments" 
+                    id="comments" 
+                    cols="" 
+                    rows="10" 
+                    formControlName="notes">
+          </textarea>
         </div>
         <div class="submit-wrapper">
           <input type="submit" id="submit" (click)="clicked($event)">
