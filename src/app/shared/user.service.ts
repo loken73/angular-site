@@ -18,8 +18,7 @@ export class UserService {
         email: user.email,
         password: user.password
       };
-      return this.http.post(this.rootUrl + 'api/Account/Register', body)
-        .subscribe(res => { console.log(res); });
+      return this.http.post(this.rootUrl + 'api/Account/Register', body);
     }
 
     loginUser(userName: string, password: string) {

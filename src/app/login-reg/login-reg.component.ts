@@ -56,8 +56,7 @@ export class LoginRegComponent {
     const password = this.loginForm.value.password;
     this.userService.loginUser(email, password)
       .subscribe((res: any) => {
-        localStorage.setItem('User_Token', res.access_token);
-        console.log(localStorage.getItem('User_Token'));
+        localStorage.setItem('User_Token', res);
         console.log(res);
       });
     this.router.navigate(['']);

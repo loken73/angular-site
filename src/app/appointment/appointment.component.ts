@@ -42,12 +42,12 @@ export class AppointmentComponent implements OnInit {
   }
 
   clicked(ev) {
+    if (ev.target.id === 'submit') {
+      this.submitAppointment();
+    }
     if (ev.target.id === 'modal-background' || ev.target.id === 'submit') {
       this.date = '';
       this.dateNone.emit(this.date);
-    }
-    if (ev.target.id === 'submit') {
-      this.submitAppointment();
     }
   }
 
@@ -57,6 +57,8 @@ export class AppointmentComponent implements OnInit {
         Time: this.appointmentForm.get('time').value,
         Notes: this.appointmentForm.get('notes').value
       };
+
+      console.log(submitAppt);
 
       return this.apptService.makeAppt(submitAppt).subscribe(res => { console.log(res); });
   }
