@@ -47,18 +47,17 @@ export class LoginRegComponent {
   onRegisterSubmit() {
     const regValues: User = this.registerForm.value;
     this.userService.registerUser(regValues);
-    console.log(regValues);
-    this.router.navigate(['']);
+    this.loginAppears();
   }
 
   onLoginSubmit() {
     const email = this.loginForm.value.email;
     const password = this.loginForm.value.password;
     this.userService.loginUser(email, password)
-      .subscribe((res: any) => {
-        localStorage.setItem('User_Token', res);
-        console.log(res);
+        .subscribe((res: any) => {
+          localStorage.setItem('User_Token', res);
+          console.log(res);
       });
-    this.router.navigate(['']);
+    this.router.navigate(['appointment']);
   }
 }
