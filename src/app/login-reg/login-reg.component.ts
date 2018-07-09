@@ -50,9 +50,14 @@ export class LoginRegComponent {
 
   onRegisterSubmit() {
     const regValues: User = this.registerForm.value;
-    this.userService.registerUser(regValues).subscribe((res) => {});
-    this.registerForm.reset();
-    this.loginAppears();
+    this.userService.registerUser(regValues)
+        .subscribe((res: any) => {
+          if (res === null) {
+            this.toastr.success('User Registration Successful. Please log in.');
+            this.registerForm.reset();
+            this.loginAppears();
+          }
+        });
   }
 
   onLoginSubmit() {
@@ -63,7 +68,6 @@ export class LoginRegComponent {
           if (res.Succeeded === true) {
             localStorage.setItem('Token', res);
             localStorage.setItem('User_Token', res.access_token);
-            this.toastr.success('User Registration Successful');
             this.loginForm.reset();
             this.router.navigate(['appointment']);
           } else {
