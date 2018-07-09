@@ -65,10 +65,11 @@ export class LoginRegComponent {
     const password = this.loginForm.value.password;
     this.userService.loginUser(email, password)
         .subscribe((res: any) => {
-          if (res.Succeeded === true) {
+          if (res.Succeeded !== null) {
             localStorage.setItem('Token', res);
             localStorage.setItem('User_Token', res.access_token);
             this.loginForm.reset();
+            this.toastr.success('User Logged In');
             this.router.navigate(['appointment']);
           } else {
             this.toastr.error(res.Errors[0]);
