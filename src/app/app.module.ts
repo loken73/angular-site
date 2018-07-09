@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -16,6 +17,7 @@ import { ServicesComponent } from './services/services.component';
 import { LoginRegComponent } from './login-reg/login-reg.component';
 import { UserService } from './shared/user.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
 import { AdminComponent } from './admin/admin.component';
 
 const AppRoutes: Routes = [
@@ -45,7 +47,9 @@ const AppRoutes: Routes = [
     RouterModule.forRoot(AppRoutes),
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [
     UserService,
