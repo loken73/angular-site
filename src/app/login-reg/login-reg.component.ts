@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/fo
 import { User } from '../shared/user.model';
 import { UserService } from '../shared/user.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login-reg',
@@ -16,7 +17,10 @@ export class LoginRegComponent {
   loginForm: FormGroup;
   user: User;
 
-  constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {
+  constructor(private fb: FormBuilder,
+              private userService: UserService,
+              private toastr: ToastrService,
+              private router: Router) {
     this.CreateRegisterForm();
 
     this.CreateLoginForm();
@@ -56,10 +60,15 @@ export class LoginRegComponent {
     const password = this.loginForm.value.password;
     this.userService.loginUser(email, password)
         .subscribe((res: any) => {
-          localStorage.setItem('Token', res);
-          localStorage.setItem('User_Token', res.access_token);
-      });
-    this.loginForm.reset();
-    this.router.navigate(['appointment']);
+          if (res.Succeeded === true) {
+            localStorage.setItem('Token', res);
+            localStorage.setItem('User_Token', res.access_token);
+            this.toastr.success('User Registration Successful');
+            this.loginForm.reset();
+            this.router.navigate(['appointment']);
+          } else {
+            this.toastr.error(res.Errors[0]);
+          }
+        });
   }
 }
