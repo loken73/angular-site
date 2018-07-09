@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { AppointmentService } from '../shared/appointment.service';
@@ -10,7 +11,9 @@ import { AppointmentService } from '../shared/appointment.service';
 export class NavbarComponent implements OnInit {
 
   tokenExists: boolean;
-  constructor(private router: Router, private apptService: AppointmentService) { }
+  constructor(private router: Router,
+              private apptService: AppointmentService,
+              private toastr: ToastrService) { }
 
   ngOnInit() {
     this.findToken();
@@ -28,6 +31,7 @@ export class NavbarComponent implements OnInit {
 
   LogOut() {
     localStorage.removeItem('User_Token');
+    this.toastr.success('User logged out successfully.');
     this.router.navigate(['/login-register']);
   }
 
