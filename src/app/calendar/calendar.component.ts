@@ -46,15 +46,19 @@ export class CalendarComponent implements OnInit {
     const newArray = this.sqInCalendar.map(function(sq) {
       if (sq >= firstday && sq < daysPlusIntroOffset) {
         return {
+          // number of square in total chart
           dayNumber: sq,
+          // Adding to actual date used
           date: moment(dateOfFirst).add(sq - firstday, 'day'),
-          dateNumber: sq - firstday + 1,
+          // number of day in the month
+          dateNumber: sq - firstday + 1
         };
       } else {
-        return {
-          dayNumber: sq,
-          date: '',
-          dateNumber: ''};
+          return {
+            dayNumber: sq,
+            date: '',
+            dateNumber: ''
+          };
       }
     });
     return newArray;
@@ -87,6 +91,11 @@ export class CalendarComponent implements OnInit {
   datePicked (date: moment.Moment) {
     if (!date) {
       this.dateChosen = '';
+      return null;
+    }
+    if (date.date() < moment().date()) {
+      this.dateChosen = '';
+      return null;
     } else {
       this.dateChosen = moment.months(date.month()) + ' ' + date.date() + ', ' + date.year();
     }

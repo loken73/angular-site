@@ -21,6 +21,10 @@
     opacity: 0.5;
 }
 
+.inactive:hover {
+    cursor: not-allowed;
+}
+
 .day div {
     margin: 2px 0 0 10px;
     font-size: 20px;

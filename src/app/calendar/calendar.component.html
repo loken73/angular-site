@@ -17,7 +17,7 @@
     <div class="day-of-week">Saturday</div>
     <div class="day" 
          *ngFor='let day of sqInCalendar2; let i = index' 
-         [class.inactive]='!day.date || day.date < day.currentDate'
+         [class.inactive]='!day.date || beforeCurrentDate(day.dateNumber)'
          (click)='datePicked(day.date)'>
           <div>{{day.dateNumber}}</div>
     </div>
