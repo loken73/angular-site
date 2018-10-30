@@ -60,7 +60,10 @@ export class AppointmentComponent implements OnInit {
 
       console.log(submitAppt);
 
-      return this.apptService.makeAppt(submitAppt).subscribe(res => { console.log(res); });
+      return this.apptService.makeAppt(submitAppt)
+        .subscribe(
+          res => { console.log(res);
+        });
   }
 
 }

@@ -1,3 +1,11 @@
-<p>
-  account works!
-</p>
+<div id="overlay" #overlay>
+  <div id="spinner"></div>
+</div>
+<div *ngIf="userAppts">
+  Some
+</div>
+<div *ngIf="!userAppts">
+  None
+</div>
+
+

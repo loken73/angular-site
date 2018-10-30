@@ -24,6 +24,7 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li *ngIf='!findToken()'><a [routerLink]="['login-register']">Register/Login</a></li>
+            <li *ngIf='findToken()'><a [routerLink]="['account']">Account</a></li>
             <li *ngIf='findToken()' (click)=LogOut()><a>Logout</a></li>
           </ul>
         </li>

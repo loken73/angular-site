@@ -9,6 +9,7 @@ export class AppointmentService {
   readonly rootUrl = 'http://localhost:61165/';
   token = localStorage.getItem('User_Token');
   access = new HttpHeaders({'Authorization': 'Bearer ' + this.token});
+
   constructor(private http: HttpClient) { }
 
   makeAppt(appt: Appointment) {
