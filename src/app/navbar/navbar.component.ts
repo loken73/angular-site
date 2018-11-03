@@ -19,7 +19,7 @@ export class NavbarComponent implements OnInit {
     this.findToken();
 
     this.apptService.getAppts().subscribe(res => console.log(res));
-    this.apptService.getAllAppts().subscribe(res => console.log(res));
+    //  this.apptService.getAllAppts().subscribe(res => console.log(res));
   }
 
   findToken() {

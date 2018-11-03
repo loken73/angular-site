@@ -42,9 +42,11 @@ export class AppointmentComponent implements OnInit {
   }
 
   clicked(ev) {
+    // Click submit button to trigger submitApplication
     if (ev.target.id === 'submit') {
       this.submitAppointment();
     }
+    // Clicking either submit or off modal to clear selections
     if (ev.target.id === 'modal-background' || ev.target.id === 'submit') {
       this.date = '';
       this.dateNone.emit(this.date);
@@ -52,6 +54,7 @@ export class AppointmentComponent implements OnInit {
   }
 
   submitAppointment() {
+    // Binding submitAppt local variable to appointment selected
       const submitAppt: Appointment = {
         ApptDate: this.date,
         Time: this.appointmentForm.get('time').value,
@@ -62,7 +65,8 @@ export class AppointmentComponent implements OnInit {
 
       return this.apptService.makeAppt(submitAppt)
         .subscribe(
-          res => { console.log(res);
+          res => {
+            console.log(res);
         });
   }
 

@@ -1,11 +1,34 @@
 <div id="overlay" #overlay>
   <div id="spinner"></div>
 </div>
-<div *ngIf="userAppts">
-  Some
-</div>
-<div *ngIf="!userAppts">
-  None
+<div class="container">
+    <div class="row" id="client-name" *ngIf="apptsExist">
+      {{ userInfo.UserName }}
+    </div>
+    <div class="row">
+      <table class="table">
+        <caption>Appoinments Made</caption>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let appt of userAppts; let i = index;">
+            <th>{{i + 1}}</th>
+            <th>{{ appt.ApptDate }}</th>
+            <th>{{ appt.Time }}</th>
+            <th>{{ appt.Notes }}</th>
+          </tr>
+        </tbody>
+      </table>
+      <div *ngIf="apptsNotExist">
+        None
+      </div>
+  </div>
 </div>
 
 

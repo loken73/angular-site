@@ -1,3 +1,20 @@
+table {
+    margin: 5px 0 150px;
+}
+
+caption {
+    font-size: 26px;
+}
+
+.container {
+    padding: 0;
+}
+
+#client-name {
+    font-size: 50px;
+    margin: 60px 0 25px;
+}
+
 #overlay {
     position: absolute;
     top: 0;

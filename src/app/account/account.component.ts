@@ -10,6 +10,9 @@ import { Component, OnInit, Renderer2, ElementRef, ViewChild } from '@angular/co
 export class AccountComponent implements OnInit {
   userAppts: Appointment[];
   @ViewChild('overlay') overlay;
+  userInfo: any;
+  apptsExist: boolean;
+  apptsNotExist: boolean;
 
   constructor(private apptService: AppointmentService, private renderer: Renderer2,
               private el: ElementRef) { }
@@ -17,10 +20,23 @@ export class AccountComponent implements OnInit {
   ngOnInit() {
     this.apptService.getAppts()
       .subscribe(
-        (res: any) => { this.userAppts = res; console.log(this.overlay.nativeElement); },
+        (res: any) => { this.userAppts = res.Appointments; this.userInfo = res; },
         err => {},
-        () => { this.renderer.setStyle(this.overlay.nativeElement, 'display', 'none'); }
+        () => { this.renderer.setStyle(this.overlay.nativeElement, 'display', 'none');
+                console.log(this.userAppts);
+                this.appointmentsExist();
+              }
       );
+  }
+
+  appointmentsExist () {
+    if (this.userAppts.length > 0) {
+      this.apptsExist = true;
+      this.apptsNotExist = false;
+    } else {
+      this.apptsNotExist = true;
+      this.apptsExist = false;
+    }
   }
 
 }

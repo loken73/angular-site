@@ -8,7 +8,7 @@
           <label for="times">Time: </label>
           <select id="times" formControlName="time">
             <option></option>
-            <option *ngFor='let appt of apptTimes'>{{ appt }}</option>
+            <option *ngFor='let appt of apptTimes; let index = i'>{{ appt }}</option>
           </select>
         </div>
         <div>
