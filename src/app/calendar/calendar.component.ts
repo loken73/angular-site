@@ -10,10 +10,15 @@ export class CalendarComponent implements OnInit {
 
   constructor() { }
 
+  // Date object representing current date
   dateNow = moment();
+  // Month of dateNow in number form
   currentMonth = this.dateNow.month();
+  // Total days in current month
   daysInMonth = this.dateNow.daysInMonth();
+  // The Date of the first day of month
   startOfMonthDate = this.dateNow.startOf('M');
+  // Day of the week the start of the month is on
   startOfMonthWeekday = this.startOfMonthDate.day();
   calendarHeader = moment.months(this.dateNow.month()) + ' ' + this.dateNow.year();
   sqInCalendar = [];
@@ -23,8 +28,10 @@ export class CalendarComponent implements OnInit {
   ngOnInit() {
     const chartLength = this.sqInArray(this.currentMonth, this.startOfMonthWeekday, this.daysInMonth);
     this.sqInCalendar2 = this.squaresWithDate(chartLength);
+    console.log(this.currentMonth);
   }
 
+  // Function returns amount of total squares in the grid of month
   sqInArray(month: number, startDate: number, monthLength: number): number {
     if (month !== 1 && ((startDate > 4 && monthLength === 31) || (startDate === 6 && monthLength === 30))) {
       return 42;
@@ -111,7 +118,7 @@ export class CalendarComponent implements OnInit {
   }
 
   beforeCurrentDate (date) {
-    if (date < moment().date()) {
+    if (date < moment().date() && this.dateNow.month() === moment().month()) {
       return true;
     } else {
       return false;

@@ -12,6 +12,7 @@ export class AppointmentComponent implements OnInit {
 
   @Input() public date: string;
   @Output() dateNone = new EventEmitter();
+  @Output() apptDateSelected = new EventEmitter();
   apptTimes: string[] = [
                           '8:00 AM',
                           '9:00 AM',
@@ -66,7 +67,9 @@ export class AppointmentComponent implements OnInit {
       return this.apptService.makeAppt(submitAppt)
         .subscribe(
           res => {
-            console.log(res);
+            if (res === '200') {
+
+            }
         });
   }
 
