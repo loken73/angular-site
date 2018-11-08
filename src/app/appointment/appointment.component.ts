@@ -67,8 +67,9 @@ export class AppointmentComponent implements OnInit {
       return this.apptService.makeAppt(submitAppt)
         .subscribe(
           res => {
-            if (res === '200') {
-
+            if (res == '200') {
+              console.log(this.date);
+              this.apptDateSelected.emit(this.date);
             }
         });
   }
