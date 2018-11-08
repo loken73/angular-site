@@ -13,6 +13,7 @@ export class AppointmentComponent implements OnInit {
   @Input() public date: string;
   @Output() dateNone = new EventEmitter();
   @Output() apptDateSelected = new EventEmitter();
+
   apptTimes: string[] = [
                           '8:00 AM',
                           '9:00 AM',
@@ -63,12 +64,13 @@ export class AppointmentComponent implements OnInit {
       };
 
       console.log(submitAppt);
+      const dateCopy = this.date;
 
       return this.apptService.makeAppt(submitAppt)
         .subscribe(
           res => {
             if (res === '200') {
-              console.log(this.date);
+              console.log('Date is:' + dateCopy);
               this.apptDateSelected.emit(this.date);
             }
         });
