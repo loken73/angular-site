@@ -41,13 +41,19 @@ export class CalendarComponent implements OnInit {
 
   }
 
+  // Creates array with total number of squares including epmty ones 35 or 42
   squaresWithDate (num: number): any {
     for (let i = 0; i < num; i++) {
       this.sqInCalendar.push(i);
     }
 
+    // Saving local copies of relevant data to not change the class variables
+
+    // Returns 0
     const firstday = this.startOfMonthWeekday;
+    // Date object of the first day in current month
     const dateOfFirst = this.startOfMonthDate;
+
     const daysPlusIntroOffset = firstday + this.daysInMonth;
 
     const newArray = this.sqInCalendar.map(function(sq) {
