@@ -66,7 +66,9 @@ export class CalendarComponent implements OnInit {
           // Adding to actual date used
           date: moment(dateOfFirst).add(sq - firstday, 'day'),
           // number of day in the month
-          dateNumber: sq - firstday + 1
+          dateNumber: sq - firstday + 1,
+          // Boolean showing whether that date was selected and submitted for the appointment
+          selectedDate: false
         };
         // The else would happen if the square is not in the range of the current month
       } else {
