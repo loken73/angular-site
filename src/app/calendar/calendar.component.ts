@@ -49,14 +49,16 @@ export class CalendarComponent implements OnInit {
 
     // Saving local copies of relevant data to not change the class variables
 
-    // Returns 0
+    // Returns 0-6 depending what day current month starts on
     const firstday = this.startOfMonthWeekday;
     // Date object of the first day in current month
     const dateOfFirst = this.startOfMonthDate;
-
+    // Sets the number of last day of the month in chart that should be numbered
     const daysPlusIntroOffset = firstday + this.daysInMonth;
 
+
     const newArray = this.sqInCalendar.map(function(sq) {
+      // Checks if the empty square is inside the range of the days of the month
       if (sq >= firstday && sq < daysPlusIntroOffset) {
         return {
           // number of square in total chart
@@ -66,6 +68,7 @@ export class CalendarComponent implements OnInit {
           // number of day in the month
           dateNumber: sq - firstday + 1
         };
+        // The else would happen if the square is not in the range of the current month
       } else {
           return {
             dayNumber: sq,
