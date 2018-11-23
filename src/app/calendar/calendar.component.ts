@@ -23,7 +23,7 @@ export class CalendarComponent implements OnInit {
   calendarHeader = moment.months(this.dateNow.month()) + ' ' + this.dateNow.year();
   sqInCalendar = [];
   sqInCalendar2: any;
-  dateChosen: string;
+  dateChosen: moment.Moment;
 
   ngOnInit() {
     const chartLength = this.sqInArray(this.currentMonth, this.startOfMonthWeekday, this.daysInMonth);
@@ -108,14 +108,14 @@ export class CalendarComponent implements OnInit {
 
   datePicked (date: moment.Moment) {
     if (!date) {
-      this.dateChosen = '';
+      this.dateChosen = null;
       return null;
     }
     if (date.date() < moment().date()) {
-      this.dateChosen = '';
+      this.dateChosen = null;
       return null;
     } else {
-      this.dateChosen = moment.months(date.month()) + ' ' + date.date() + ', ' + date.year();
+      this.dateChosen = date; // moment.months(date.month()) + ' ' + date.date() + ', ' + date.year();
     }
     console.log(this.dateChosen);
   }
@@ -137,7 +137,7 @@ export class CalendarComponent implements OnInit {
   }
 
   dateNowNone(empty: string) {
-    this.dateChosen = empty;
+    this.dateChosen = null;
   }
 
 }
