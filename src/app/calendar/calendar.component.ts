@@ -49,7 +49,7 @@ export class CalendarComponent implements OnInit {
 
     // Saving local copies of relevant data to not change the class variables
 
-    // Returns 0-6 depending what day current month starts on
+    // Returns 0 (Sunday)-6(Saturday) depending what day current month starts on
     const firstday = this.startOfMonthWeekday;
     // Date object of the first day in current month
     const dateOfFirst = this.startOfMonthDate;
