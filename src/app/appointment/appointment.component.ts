@@ -2,6 +2,7 @@ import { AppointmentService } from './../shared/appointment.service';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Appointment } from '../shared/appointment.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-appointment',
@@ -10,9 +11,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class AppointmentComponent implements OnInit {
 
+  constructor(private fb: FormBuilder, private apptService: AppointmentService) { }
+
   @Input() public date: string;
   @Output() dateNone = new EventEmitter();
   @Output() apptDateSelected = new EventEmitter();
+
+  // dateFormatted: string = this.date.format('MMMM DD YYYY');
 
   apptTimes: string[] = [
                           '8:00 AM',
@@ -26,9 +31,8 @@ export class AppointmentComponent implements OnInit {
                           '4:00 PM',
                           '5:00 PM'
                         ];
-  appt: Appointment;
 
-  constructor(private fb: FormBuilder, private apptService: AppointmentService) { }
+  appt: Appointment;
 
   appointmentForm: FormGroup;
 
@@ -50,7 +54,7 @@ export class AppointmentComponent implements OnInit {
     }
     // Clicking either submit or off modal to clear selections
     if (ev.target.id === 'modal-background' || ev.target.id === 'submit') {
-      this.date = '';
+      this.date = null;
       this.dateNone.emit(this.date);
     }
   }
