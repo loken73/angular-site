@@ -68,16 +68,63 @@ export class AppointmentComponent implements OnInit {
       };
 
       console.log(submitAppt);
+      const isoDate = this.isoDateConvert(submitAppt.ApptDate);
 
       return this.apptService.makeAppt(submitAppt)
         .subscribe(
           res => {
             if (res === '200') {
               console.log('Appointment Date is:' + submitAppt.ApptDate);
-              console.log(moment(submitAppt.ApptDate));
-              this.apptDateSelected.emit(submitAppt.ApptDate);
+              console.log(moment(isoDate));
+              this.apptDateSelected.emit(isoDate);
             }
         });
+  }
+
+  isoDateConvert(input: string) {
+    const dateSplit = input.split(' ');
+    let numericMonth: string;
+
+    switch (dateSplit[0]) {
+      case 'January':
+        numericMonth = '01';
+        break;
+      case 'February':
+        numericMonth = '02';
+        break;
+      case 'March':
+        numericMonth = '03';
+        break;
+      case 'April':
+        numericMonth = '04';
+        break;
+      case 'May':
+        numericMonth = '05';
+        break;
+      case 'June':
+        numericMonth = '06';
+        break;
+      case 'July':
+        numericMonth = '07';
+        break;
+      case 'August':
+        numericMonth = '08';
+        break;
+      case 'September':
+        numericMonth = '09';
+        break;
+      case 'October':
+        numericMonth = '10';
+        break;
+      case 'November':
+        numericMonth = '11';
+        break;
+      case 'December':
+        numericMonth = '12';
+        break;
+    }
+
+    return `${dateSplit[2]}-${numericMonth}-${dateSplit[1]}`;
   }
 
 }
