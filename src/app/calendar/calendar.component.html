@@ -1,5 +1,8 @@
 <div>
-  <app-appointment [date]='dateChosen' (dateNone)='dateNowNone($event)'></app-appointment>
+  <app-appointment [date]='dateChosen' 
+                  (dateNone)='dateNowNone($event)'
+                  (apptDateSelected)='apptConfirmed($event)'>
+  </app-appointment>
 </div>
 <div class="container">
   <div id="calendar-header">
@@ -19,7 +22,7 @@
          *ngFor='let day of sqInCalendar2; let i = index' 
          [class.inactive]='!day.date || beforeCurrentDate(day.dateNumber)'
          (click)='datePicked(day.date)'>
-          <div>{{day.dateNumber}}</div>
+          <div><span *ngIf='day.date === dateConfirmed'>C</span>{{day.dateNumber}}</div>
     </div>
   </div>
 </div>

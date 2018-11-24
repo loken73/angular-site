@@ -68,14 +68,14 @@ export class AppointmentComponent implements OnInit {
       };
 
       console.log(submitAppt);
-      const dateCopy = this.date;
 
       return this.apptService.makeAppt(submitAppt)
         .subscribe(
           res => {
             if (res === '200') {
-              console.log('Date is:' + dateCopy);
-              this.apptDateSelected.emit(this.date);
+              console.log('Appointment Date is:' + submitAppt.ApptDate);
+              console.log(moment(submitAppt.ApptDate));
+              this.apptDateSelected.emit(submitAppt.ApptDate);
             }
         });
   }

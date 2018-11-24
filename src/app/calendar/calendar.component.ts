@@ -20,10 +20,12 @@ export class CalendarComponent implements OnInit {
   startOfMonthDate = this.dateNow.startOf('M');
   // Day of the week the start of the month is on
   startOfMonthWeekday = this.startOfMonthDate.day();
-  calendarHeader = this.dateNow.format('MMMM YYYY'); // moment.months(this.dateNow.month()) + ' ' + this.dateNow.year();
+  calendarHeader = this.dateNow.format('MMMM YYYY');
   sqInCalendar = [];
   sqInCalendar2: any;
   dateChosen: string;
+  dateConfirmed: moment.Moment;
+
 
   ngOnInit() {
     const chartLength = this.sqInArray(this.currentMonth, this.startOfMonthWeekday, this.daysInMonth);
@@ -56,20 +58,19 @@ export class CalendarComponent implements OnInit {
     // Sets the number of last day of the month in chart that should be numbered
     const daysPlusIntroOffset = firstday + this.daysInMonth;
 
-
     const newArray = this.sqInCalendar.map(function(sq) {
       // Checks if the empty square is inside the range of the days of the month
       if (sq >= firstday && sq < daysPlusIntroOffset) {
-        return {
-          // number of square in total chart
-          dayNumber: sq,
-          // Adding to actual date used
-          date: moment(dateOfFirst).add(sq - firstday, 'day'),
-          // number of day in the month
-          dateNumber: sq - firstday + 1,
-          // Boolean showing whether that date was selected and submitted for the appointment
-          selectedDate: false
-        };
+          return {
+            // number of square in total chart
+            dayNumber: sq,
+            // Adding to actual date used
+            date: moment(dateOfFirst).add(sq - firstday, 'day'),
+            // number of day in the month
+            dateNumber: sq - firstday + 1,
+            // Boolean showing whether that date was selected and submitted for the appointment
+            selectedDate: false
+          };
         // The else would happen if the square is not in the range of the current month
       } else {
           return {
@@ -115,7 +116,7 @@ export class CalendarComponent implements OnInit {
       this.dateChosen = '';
       return null;
     } else {
-      this.dateChosen = date.format('MMMM DD YYYY'); // moment.months(date.month()) + ' ' + date.date() + ', ' + date.year();
+      this.dateChosen = date.format('MMMM DD YYYY');
     }
     console.log(this.dateChosen);
   }
@@ -138,6 +139,12 @@ export class CalendarComponent implements OnInit {
 
   dateNowNone(empty: string) {
     this.dateChosen = null;
+  }
+
+  apptConfirmed($event: string) {
+    const dateConfirmedMoment = moment($event);
+
+    this.dateConfirmed = dateConfirmedMoment;
   }
 
 }
