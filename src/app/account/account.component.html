@@ -2,9 +2,10 @@
   <div id="spinner"></div>
 </div>
 <div class="container">
-    <div class="row" id="client-name" *ngIf="apptsExist">
-      {{ userInfo.UserName }}
-    </div>
+  <div class="row" id="client-name">
+    {{ userInfo.UserName }}
+  </div>
+  <div *ngIf="apptsExist"> 
     <div class="row table-row">
       <table class="table">
         <caption>Appoinments Made</caption>
@@ -25,9 +26,10 @@
           </tr>
         </tbody>
       </table>
-      <div *ngIf="apptsNotExist">
-        None
-      </div>
+    </div>
+  </div>
+  <div class="no-appts" *ngIf="apptsNotExist">
+    None
   </div>
 </div>
 

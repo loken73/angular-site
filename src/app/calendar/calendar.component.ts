@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck, AfterContentChecked } from '@angular/core';
 import * as moment from 'moment';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.css']
 })
-export class CalendarComponent implements OnInit {
+export class CalendarComponent implements OnInit, AfterContentChecked {
 
   constructor() { }
 
@@ -25,12 +26,17 @@ export class CalendarComponent implements OnInit {
   sqInCalendar2: any;
   dateChosen: string;
   dateConfirmed: moment.Moment;
-
+  isMobile: boolean;
 
   ngOnInit() {
     const chartLength = this.sqInArray(this.currentMonth, this.startOfMonthWeekday, this.daysInMonth);
     this.sqInCalendar2 = this.squaresWithDate(chartLength);
     console.log(this.currentMonth);
+  }
+
+  ngAfterContentChecked() {
+    console.log('Do check fired!');
+    this.calendarCheck(this.sqInCalendar2, this.dateConfirmed);
   }
 
   // Function returns amount of total squares in the grid of month
@@ -83,6 +89,18 @@ export class CalendarComponent implements OnInit {
     return newArray;
   }
 
+  calendarCheck(array: any, date: moment.Moment) {
+    if (date !== undefined) {
+      for (let i = 0; i < array.length; i++) {
+        if (array[i].date !== '') {
+          if (array[i].date.get('date') === date.get('date')) {
+            array[i].selectedDate = true;
+          }
+        }
+      }
+    }
+  }
+
   nextMonth() {
     const newMonthStart = this.startOfMonthDate.add(1, 'month');
     this.currentMonth = newMonthStart.month();
@@ -130,21 +148,23 @@ export class CalendarComponent implements OnInit {
   }
 
   beforeCurrentDate (date) {
-    if (date < moment().date() && this.dateNow.month() === moment().month()) {
+    // Boolean representing the dates before the current date of the cusrrent month and year being shaded
+    if (date < moment().date() && this.dateNow.month() === moment().month() && this.dateNow.year() === moment().year()) {
       return true;
     } else {
       return false;
     }
   }
 
-  dateNowNone(empty: string) {
+  dateNowNone() {
     this.dateChosen = null;
   }
 
   apptConfirmed($event: string) {
+    console.log($event);
     const dateConfirmedMoment = moment($event);
 
     this.dateConfirmed = dateConfirmedMoment;
+    console.log(this.dateConfirmed);
   }
-
 }

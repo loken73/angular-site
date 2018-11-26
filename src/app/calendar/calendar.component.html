@@ -11,18 +11,20 @@
     <span (click)='nextMonth()'><i class="fa fa-chevron-right" aria-hidden="true"></i></span>
   </div>
   <div id="calendar">
-    <div class="day-of-week">Sunday</div>
-    <div class="day-of-week">Monday</div>
-    <div class="day-of-week">Tuesday</div>
-    <div class="day-of-week">Wednesday</div>
-    <div class="day-of-week">Thursday</div>
-    <div class="day-of-week">Friday</div>
-    <div class="day-of-week">Saturday</div>
+    <div class="day-of-week">Sun</div>
+    <div class="day-of-week">Mon</div>
+    <div class="day-of-week">Tue</div>
+    <div class="day-of-week">Wed</div>
+    <div class="day-of-week">Thu</div>
+    <div class="day-of-week">Fri</div>
+    <div class="day-of-week">Sat</div>
     <div class="day" 
          *ngFor='let day of sqInCalendar2; let i = index' 
          [class.inactive]='!day.date || beforeCurrentDate(day.dateNumber)'
          (click)='datePicked(day.date)'>
-          <div><span *ngIf='day.date === dateConfirmed'>C</span>{{day.dateNumber}}</div>
+          <div>{{day.dateNumber}}
+               <div class='check' *ngIf='day.selectedDate'>&#10003;</div>
+          </div>
     </div>
   </div>
 </div>

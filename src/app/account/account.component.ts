@@ -14,13 +14,12 @@ export class AccountComponent implements OnInit {
   apptsExist: boolean;
   apptsNotExist: boolean;
 
-  constructor(private apptService: AppointmentService, private renderer: Renderer2,
-              private el: ElementRef) { }
+  constructor(private apptService: AppointmentService, private renderer: Renderer2) { }
 
   ngOnInit() {
     this.apptService.getAppts()
       .subscribe(
-        (res: any) => { this.userAppts = res.Appointments; this.userInfo = res; },
+        (res: any) => { this.userAppts = res.Appointments; this.userInfo = res; console.log(res); },
         err => {},
         () => { this.renderer.setStyle(this.overlay.nativeElement, 'display', 'none');
                 console.log(this.userAppts);

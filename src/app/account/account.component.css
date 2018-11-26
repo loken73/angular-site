@@ -14,6 +14,15 @@ caption {
     padding: 0 10px;
 }
 
+.user-info {
+    width: 85%;
+    margin: 0 auto;
+}
+
+.no-appts {
+    margin: 400px;
+}
+
 #client-name {
     font-size: 50px;
     margin: 60px 0 25px;
@@ -30,7 +39,7 @@ caption {
 }
 
 #spinner {
-    margin-top: 300px;
+    margin: 150px calc(50% - 50px);
     border-radius: 50%;
     border: solid 3px #dcdcdc;
     border-top: solid 3px green;
