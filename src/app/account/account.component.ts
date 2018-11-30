@@ -10,7 +10,7 @@ import { Component, OnInit, Renderer2, ElementRef, ViewChild } from '@angular/co
 export class AccountComponent implements OnInit {
   userAppts: Appointment[];
   @ViewChild('overlay') overlay;
-  userInfo: any;
+  userName: string;
   apptsExist: boolean;
   apptsNotExist: boolean;
 
@@ -19,7 +19,7 @@ export class AccountComponent implements OnInit {
   ngOnInit() {
     this.apptService.getAppts()
       .subscribe(
-        (res: any) => { this.userAppts = res.Appointments; this.userInfo = res; console.log(res); },
+        (res: any) => { this.userAppts = res.Appointments; this.userName = res.UserName; console.log(res); },
         err => {},
         () => { this.renderer.setStyle(this.overlay.nativeElement, 'display', 'none');
                 console.log(this.userAppts);
